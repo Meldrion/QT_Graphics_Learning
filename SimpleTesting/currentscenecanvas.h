@@ -25,6 +25,7 @@ public:
     void setUnitSize(int unitSize);
     void setUnitDimension(int unit_width,int unit_height);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 signals:
 

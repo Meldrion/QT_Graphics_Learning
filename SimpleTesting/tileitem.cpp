@@ -14,3 +14,8 @@ void TileItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 {
     painter->drawPixmap(QPoint(0,0),*m_tile);
 }
+
+TileItem::~TileItem()
+{
+    m_tile = 0x0;
+}

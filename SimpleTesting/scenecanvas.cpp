@@ -42,8 +42,8 @@ void SceneCanvas::setupMatrix()
 
 void SceneCanvas::init()
 {
-    int mapWidth = 20;
-    int mapHeight = 15;
+    int mapWidth = 400;
+    int mapHeight = 400;
     int tileDim = 32;
     m_scene = new SceneRenderer(this);
     this->setScene(m_scene);

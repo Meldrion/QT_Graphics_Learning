@@ -12,6 +12,7 @@ public:
     TileItem(QPixmap* tile,QGraphicsItem* parent);
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    ~TileItem();
 signals:
 
 public slots:

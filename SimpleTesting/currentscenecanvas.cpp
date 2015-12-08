@@ -15,8 +15,16 @@ CurrentSceneCanvas::CurrentSceneCanvas(int unit_width,int unit_height,int unit_s
 
     // Dummy Code
     this->m_linked_tilesets.append(new Tileset("desert.png"));
-    TileItem* item = new TileItem(m_linked_tilesets.at(0)->getTileAt(0,0),this);
-    m_elements[0].replace(0,item);
+
+    for (int i=0;i<unit_width;i++)
+    {
+        for (int j=0;j<unit_height;j++)
+        {
+                TileItem* item = new TileItem(m_linked_tilesets.at(0)->getTileAt(0,0),this);
+                item->setPos(i*unit_size,j*unit_size);
+                m_elements[i].replace(j,item);
+        }
+    }
 }
 
 QRectF CurrentSceneCanvas::boundingRect() const
@@ -51,6 +59,19 @@ void CurrentSceneCanvas::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         {
             cursor->hide();
         }
+    }
+}
+
+void CurrentSceneCanvas::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    if (boundingRect().contains(event->scenePos()))
+    {
+        int x_unit_pos = (int) (event->scenePos().x() / 32);
+        int y_unit_pos = (int) (event->scenePos().y() / 32);
+        delete m_elements[x_unit_pos][y_unit_pos];
+        TileItem* item = new TileItem(m_linked_tilesets.at(0)->getTileAt(1,0),this);
+        item->setPos(x_unit_pos*m_unit_size,y_unit_pos*m_unit_size);
+        m_elements[x_unit_pos][y_unit_pos] = item;
     }
 }
 

@@ -3,7 +3,7 @@
 SceneRenderer::SceneRenderer(QWidget* parent):QGraphicsScene(parent)
 {
     setBackgroundBrush(QBrush(QColor(96,96,96)));
-    current_scene_canvas = new CurrentSceneCanvas(20,15,32);
+    current_scene_canvas = new CurrentSceneCanvas(400,400,32);
     this->addItem(current_scene_canvas);
 }
 
