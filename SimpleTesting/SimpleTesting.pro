@@ -17,14 +17,22 @@ SOURCES += main.cpp\
     scenecanvas.cpp \
     tileset.cpp \
     scenerenderer.cpp \
-    currentscenecanvas.cpp \
-    tileitem.cpp
+    tileitem.cpp \
+    scene/abstractscenelayer.cpp \
+    scene/tilelayer.cpp \
+    scene/scenebackgroundwhitelayer.cpp \
+    scene/mousecursorlayer.cpp \
+    scene/mousecursor.cpp
 
 HEADERS  += mainwindow.h \
     scenecanvas.h \
     tileset.h \
     scenerenderer.h \
-    currentscenecanvas.h \
-    tileitem.h
+    tileitem.h \
+    scene/abstractscenelayer.h \
+    scene/tilelayer.h \
+    scene/scenebackgroundwhitelayer.h \
+    scene/mousecursorlayer.h \
+    scene/mousecursor.h
 
 FORMS    += mainwindow.ui

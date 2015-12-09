@@ -10,6 +10,9 @@
 #include <QDebug>
 #include <QApplication>
 #include "scenerenderer.h"
+#include "scene/tilelayer.h"
+#include "scene/mousecursorlayer.h"
+#include "scene/scenebackgroundwhitelayer.h"
 
 class SceneCanvas : public QGraphicsView
 {
