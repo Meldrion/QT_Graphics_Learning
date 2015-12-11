@@ -4,6 +4,7 @@
 #include <QGraphicsItem>
 #include <QRect>
 #include <QPainter>
+#include <QPointF>
 
 namespace Ignis {
     class AbstractSceneLayer : public QGraphicsItem
@@ -14,6 +15,8 @@ namespace Ignis {
             QRectF boundingRect() const;
             void setUnitSize(int unitSize);
             void setUnitDimension(int unit_width,int unit_height);
+            void setZoom(float zoom);
+            void setRenderingStartPosition(const QPointF& startPos);
             void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
             void mousePressEvent(QGraphicsSceneMouseEvent *event);
             void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
@@ -21,6 +24,8 @@ namespace Ignis {
             int m_unit_width;
             int m_unit_height;
             int m_unit_size;
+            QPointF m_startPosition;
+            float m_zoom;
         signals:
 
         public slots:

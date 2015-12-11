@@ -22,7 +22,9 @@ SOURCES += main.cpp\
     scene/tilelayer.cpp \
     scene/scenebackgroundwhitelayer.cpp \
     scene/mousecursorlayer.cpp \
-    scene/mousecursor.cpp
+    scene/mousecursor.cpp \
+    scene/tilerenderer.cpp \
+    scene/tiledata.cpp
 
 HEADERS  += mainwindow.h \
     scenecanvas.h \
@@ -33,6 +35,8 @@ HEADERS  += mainwindow.h \
     scene/tilelayer.h \
     scene/scenebackgroundwhitelayer.h \
     scene/mousecursorlayer.h \
-    scene/mousecursor.h
+    scene/mousecursor.h \
+    scene/tilerenderer.h \
+    scene/tiledata.h
 
 FORMS    += mainwindow.ui

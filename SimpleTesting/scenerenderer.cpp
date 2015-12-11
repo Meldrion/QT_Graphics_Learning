@@ -24,6 +24,16 @@ void SceneRenderer::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     QGraphicsScene::mouseMoveEvent(event);
 }
 
+void SceneRenderer::changeViewport(const QPointF &startPosition,const float zoom)
+{
+    for (QVector<Ignis::AbstractSceneLayer*>::iterator it = m_layers.begin();it != m_layers.end();++it)
+    {
+        Ignis::AbstractSceneLayer* layer = *it;
+        layer->setZoom(zoom);
+        layer->setRenderingStartPosition(startPosition);
+    }
+}
+
 void SceneRenderer::addLayer(Ignis::AbstractSceneLayer *layer)
 {
     if (!m_layers.contains(layer))

@@ -15,7 +15,8 @@ Tileset::Tileset(QString path,int tileDim)
         for (int x = 0; x < m_tileset_unit_width; x++)
         {
             QVector<QPixmap*> innerVector;
-            for (int y = 0; y < m_tileset_unit_width; y++)
+            for (int y = 0; y < m_tileset_unit_height
+                 ; y++)
             {
                 current_tile = new QPixmap(tilesetImage.copy(x * tileDim,y * tileDim,tileDim,tileDim));
                 innerVector.append(current_tile);

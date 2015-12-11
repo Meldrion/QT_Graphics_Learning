@@ -12,6 +12,7 @@ public:
     SceneRenderer(QWidget* parent = 0);
     ~SceneRenderer();
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+    void changeViewport(const QPointF &startPosition,const float zoom);
     void addLayer(Ignis::AbstractSceneLayer* layer);
 private:
     QVector<Ignis::AbstractSceneLayer*> m_layers;
