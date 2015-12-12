@@ -10,7 +10,7 @@
 #include <QDebug>
 #include <QApplication>
 #include <QScrollBar>
-#include "scenerenderer.h"
+#include "scene.h"
 #include "scene/tilelayer.h"
 #include "scene/mousecursorlayer.h"
 #include "scene/scenebackgroundwhitelayer.h"
@@ -18,7 +18,7 @@
 class SceneCanvas : public QGraphicsView
 {
 private:
-    SceneRenderer* m_scene;
+    Ignis::Scene* m_scene;
     QGraphicsRectItem* m_cursor;
     QGraphicsRectItem* m_scene_canvas;
     int zoomValue;

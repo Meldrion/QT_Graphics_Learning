@@ -7,13 +7,16 @@
 namespace Ignis {
     class MouseCursor : public QGraphicsItem
     {
+    private:
+        int m_unit_size;
+        QColor m_rect_color;
+        int m_unit_selection_width;
+        int m_unit_selection_height;
     public:
-        MouseCursor(QGraphicsItem* parent = 0);
+        MouseCursor(int unit_size,QGraphicsItem* parent = 0);
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-    signals:
-
-    public slots:
+        void setSelectionDimension(int unit_selection_width,int unit_selection_height);
     };
 }
 

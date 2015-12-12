@@ -26,16 +26,15 @@ void TileLayer::init()
 
 void TileLayer::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    float tileDim = 32 * m_zoom;
-    int startX = (int) m_startPosition.x() / tileDim;
-    int startY = (int) m_startPosition.y() / tileDim;
+
+    float tileDim = m_unit_size * m_zoom;
     int width = qCeil(widget->width() / tileDim);
     int height = qCeil(widget->height() / tileDim);
 
+    int startX = qMax((int) (m_startPosition.x() / tileDim),0);
+    int startY = qMax((int) (m_startPosition.y() / tileDim),0);
     int endX = qMin(startX + width,m_unit_width - 1);
-    startX = endX - width;
     int endY = qMin(startY + height,m_unit_height - 1);
-    startY = endY - height;
 
     for (int i = startX;i <= endX;i++) {
         for (int j = startY;j <= endY;j++) {

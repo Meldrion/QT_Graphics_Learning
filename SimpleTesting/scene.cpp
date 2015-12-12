@@ -1,11 +1,13 @@
-#include "scenerenderer.h"
+#include "scene.h"
 
-SceneRenderer::SceneRenderer(QWidget* parent):QGraphicsScene(parent)
+using namespace Ignis;
+
+Scene::Scene(QWidget* parent):QGraphicsScene(parent)
 {
     setBackgroundBrush(QBrush(QColor(96,96,96)));
 }
 
-SceneRenderer::~SceneRenderer()
+Scene::~Scene()
 {
     for (QVector<Ignis::AbstractSceneLayer*>::iterator it = m_layers.begin();it != m_layers.end();++it)
     {
@@ -13,7 +15,7 @@ SceneRenderer::~SceneRenderer()
     }
 }
 
-void SceneRenderer::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+void Scene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     for (QVector<Ignis::AbstractSceneLayer*>::iterator it = m_layers.begin();it != m_layers.end();++it)
     {
@@ -24,7 +26,7 @@ void SceneRenderer::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     QGraphicsScene::mouseMoveEvent(event);
 }
 
-void SceneRenderer::changeViewport(const QPointF &startPosition,const float zoom)
+void Scene::changeViewport(const QPointF &startPosition,const float zoom)
 {
     for (QVector<Ignis::AbstractSceneLayer*>::iterator it = m_layers.begin();it != m_layers.end();++it)
     {
@@ -34,7 +36,7 @@ void SceneRenderer::changeViewport(const QPointF &startPosition,const float zoom
     }
 }
 
-void SceneRenderer::addLayer(Ignis::AbstractSceneLayer *layer)
+void Scene::addLayer(Ignis::AbstractSceneLayer *layer)
 {
     if (!m_layers.contains(layer))
     {

@@ -16,7 +16,6 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     scenecanvas.cpp \
     tileset.cpp \
-    scenerenderer.cpp \
     tileitem.cpp \
     scene/abstractscenelayer.cpp \
     scene/tilelayer.cpp \
@@ -24,12 +23,12 @@ SOURCES += main.cpp\
     scene/mousecursorlayer.cpp \
     scene/mousecursor.cpp \
     scene/tilerenderer.cpp \
-    scene/tiledata.cpp
+    scene/tiledata.cpp \
+    scene.cpp
 
 HEADERS  += mainwindow.h \
     scenecanvas.h \
     tileset.h \
-    scenerenderer.h \
     tileitem.h \
     scene/abstractscenelayer.h \
     scene/tilelayer.h \
@@ -37,6 +36,7 @@ HEADERS  += mainwindow.h \
     scene/mousecursorlayer.h \
     scene/mousecursor.h \
     scene/tilerenderer.h \
-    scene/tiledata.h
+    scene/tiledata.h \
+    scene.h
 
 FORMS    += mainwindow.ui

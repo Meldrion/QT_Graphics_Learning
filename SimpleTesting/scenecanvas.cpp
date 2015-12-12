@@ -2,7 +2,6 @@
 
 SceneCanvas::SceneCanvas(QWidget* parent):QGraphicsView(parent)
 {
-
     this->setMouseTracking(true);
     this->setDragMode(QGraphicsView::NoDrag);
     zoomValue = 250;
@@ -23,9 +22,9 @@ void SceneCanvas::wheelEvent(QWheelEvent *event) {
         else
         {
             zoomValue -= 6;
-            if (zoomValue < 18)
+            if (zoomValue < 0)
             {
-                zoomValue = 18;
+                zoomValue = 0;
             }
         }
 
@@ -65,11 +64,10 @@ void SceneCanvas::setupMatrix()
 
 void SceneCanvas::init()
 {
-    int mapWidth = 500;
-    int mapHeight = 500;
+    int mapWidth = 100;
+    int mapHeight = 100;
     int tileDim = 32;
-    m_scene = new SceneRenderer(this);
-    //m_scene->addLayer(new Ignis::SceneLayer(mapWidth,mapHeight,tileDim));
+    m_scene = new Ignis::Scene(this);
 
     Ignis::SceneBackgroundWhiteLayer* background = new Ignis::SceneBackgroundWhiteLayer(mapWidth,mapHeight,tileDim);
     Ignis::TileLayer* tileLayer = new Ignis::TileLayer(mapWidth,mapHeight,tileDim);
