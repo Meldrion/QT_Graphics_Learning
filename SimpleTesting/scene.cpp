@@ -26,6 +26,32 @@ void Scene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     QGraphicsScene::mouseMoveEvent(event);
 }
 
+void Scene::mouseLeaveEvent()
+{
+    for (QVector<Ignis::AbstractSceneLayer*>::iterator it = m_layers.begin();it != m_layers.end();++it)
+    {
+        Ignis::AbstractSceneLayer* layer = *it;
+        Ignis::MouseCursorLayer* mouseLayer = dynamic_cast<Ignis::MouseCursorLayer*>(layer);
+        if (mouseLayer)
+        {
+            mouseLayer->hide();
+        }
+    }
+}
+
+void Scene::mouseEnterEvent()
+{
+    for (QVector<Ignis::AbstractSceneLayer*>::iterator it = m_layers.begin();it != m_layers.end();++it)
+    {
+        Ignis::AbstractSceneLayer* layer = *it;
+        Ignis::MouseCursorLayer* mouseLayer = dynamic_cast<Ignis::MouseCursorLayer*>(layer);
+        if (mouseLayer)
+        {
+            mouseLayer->show();
+        }
+    }
+}
+
 void Scene::changeViewport(const QPointF &startPosition,const float zoom)
 {
     for (QVector<Ignis::AbstractSceneLayer*>::iterator it = m_layers.begin();it != m_layers.end();++it)

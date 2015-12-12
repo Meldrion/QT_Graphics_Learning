@@ -7,6 +7,16 @@ SceneCanvas::SceneCanvas(QWidget* parent):QGraphicsView(parent)
     zoomValue = 250;
 }
 
+void SceneCanvas::leaveEvent(QEvent *event)
+{
+    if (m_scene) {m_scene->mouseLeaveEvent();}
+}
+
+void SceneCanvas::enterEvent(QEvent *event)
+{
+    if (m_scene) {m_scene->mouseEnterEvent();}
+}
+
 void SceneCanvas::wheelEvent(QWheelEvent *event) {
 
     if (QApplication::keyboardModifiers() & Qt::ControlModifier)
@@ -64,8 +74,8 @@ void SceneCanvas::setupMatrix()
 
 void SceneCanvas::init()
 {
-    int mapWidth = 100;
-    int mapHeight = 100;
+    int mapWidth = 250;
+    int mapHeight = 250;
     int tileDim = 32;
     m_scene = new Ignis::Scene(this);
 
@@ -91,6 +101,7 @@ void SceneCanvas::init()
     tileLayer2->addTileset(desertTileset);
     tileLayer3->addTileset(desertTileset);
     tileLayer4->addTileset(desertTileset);
+    mouseCursor->setCurrentTileset(desertTileset);
 
     int tX = 0;
     int tY = 0;
@@ -102,6 +113,9 @@ void SceneCanvas::init()
         {
             tY = (tY == 14)?0:++tY;
 
+            //tileLayer->addTileAt(i,j,0,1,0);
+
+            // Worst Case
             tileLayer->addTileAt(i,j,0,tX,tY);
             tileLayer2->addTileAt(i,j,0,tX,tY);
             tileLayer3->addTileAt(i,j,0,tX,tY);

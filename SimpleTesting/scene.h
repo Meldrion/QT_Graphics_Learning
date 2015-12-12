@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QGraphicsScene>
 #include "scene/tilelayer.h"
+#include "scene/mousecursorlayer.h"
 
 namespace Ignis
 {
@@ -14,6 +15,8 @@ namespace Ignis
         Scene(QWidget* parent = 0);
         ~Scene();
         void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+        void mouseLeaveEvent();
+        void mouseEnterEvent();
         void changeViewport(const QPointF &startPosition,const float zoom);
         void addLayer(Ignis::AbstractSceneLayer* layer);
     private:

@@ -24,6 +24,8 @@ private:
     int zoomValue;
 public:
     SceneCanvas(QWidget* parent = 0);
+    void leaveEvent(QEvent *event);
+    void enterEvent(QEvent *event);
     void wheelEvent(QWheelEvent *event);
     void scrollContentsBy(int dx, int dy);
     void setupMatrix();
