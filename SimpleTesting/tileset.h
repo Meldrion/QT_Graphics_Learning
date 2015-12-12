@@ -16,6 +16,7 @@ private:
     QVector<QVector<QPixmap*> > m_tiles;
 public:
     Tileset(QString path,int tileDim = 32);
+    bool isInRange(int x,int y);
     QPixmap* getTileAt(int x,int y);
 
 signals:

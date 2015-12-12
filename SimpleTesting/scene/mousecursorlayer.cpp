@@ -5,6 +5,8 @@ using namespace Ignis;
 MouseCursorLayer::MouseCursorLayer(int unit_width,int unit_height,int unit_size,
                                    QGraphicsItem *parent):AbstractSceneLayer(unit_width,unit_height,unit_size,parent)
 {
+    m_mouse_is_down = false;
+    m_current_layer_index = 0;
     m_mouseCursor = new MouseCursor(unit_size,this);
     m_mouse_unit_position = QPointF(0,0);
     m_mouseCursor->setSelectionStart(0,10);
@@ -35,6 +37,16 @@ void MouseCursorLayer::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     {
         m_mouseCursor->hide();
     }
+}
+
+void MouseCursorLayer::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    m_mouse_is_down = true;
+}
+
+void MouseCursorLayer::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+    m_mouse_is_down = false;
 }
 
 void MouseCursorLayer::setCurrentTileset(Tileset* tileset)

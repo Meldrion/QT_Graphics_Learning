@@ -3,6 +3,7 @@
 
 #include <QtMath>
 #include <QRectF>
+#include <QDebug>
 #include <QGraphicsSceneMouseEvent>
 #include "scene/abstractscenelayer.h"
 #include "scene/mousecursor.h"
@@ -17,6 +18,8 @@ namespace Ignis
                          QGraphicsItem *parent = 0);
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
         void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+        void mousePressEvent(QGraphicsSceneMouseEvent *event);
+        void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
         void setCurrentTileset(Tileset* tileset);
         void setTilesetSelection(const QRectF &rect);
 
@@ -25,6 +28,8 @@ namespace Ignis
         QPointF m_mouse_unit_position;
         Tileset* m_current_tileset;
         QRectF m_current_selection_rect;
+        int m_current_layer_index;
+        bool m_mouse_is_down;
     signals:
 
     public slots:

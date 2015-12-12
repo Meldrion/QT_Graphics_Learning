@@ -30,6 +30,11 @@ Tileset::Tileset(QString path,int tileDim)
     }
 }
 
+bool Tileset::isInRange(int x, int y)
+{
+    return 0 <= x && 0 <= y && x < m_tileset_unit_width && y < m_tileset_unit_height;
+}
+
 QPixmap* Tileset::getTileAt(int x, int y)
 {
     return m_tiles.at(x).at(y);

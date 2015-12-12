@@ -28,9 +28,12 @@ void MouseCursor::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
         {
             for (int j=m_unit_start_Y;j<m_unit_start_Y + m_unit_selection_width;j++)
             {
-                painter->drawPixmap((i - m_unit_start_X) * m_unit_size,
-                                    (j - m_unit_start_Y) * m_unit_size,
-                                    m_unit_size, m_unit_size,*m_current_tileset->getTileAt(i,j));
+                if (m_current_tileset->isInRange(i,j))
+                {
+                    painter->drawPixmap((i - m_unit_start_X) * m_unit_size,
+                                        (j - m_unit_start_Y) * m_unit_size,
+                                        m_unit_size, m_unit_size,*m_current_tileset->getTileAt(i,j));
+                }
             }
         }
     }
