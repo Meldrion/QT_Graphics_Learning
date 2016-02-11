@@ -28,6 +28,7 @@ void TileLayer::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 {
 
     float tileDim = m_unit_size * m_zoom;
+
     int width = qCeil(widget->width() / tileDim);
     int height = qCeil(widget->height() / tileDim);
 

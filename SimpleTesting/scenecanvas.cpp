@@ -5,6 +5,8 @@ SceneCanvas::SceneCanvas(QWidget* parent):QGraphicsView(parent)
     this->setMouseTracking(true);
     this->setDragMode(QGraphicsView::NoDrag);
     zoomValue = 250;
+    this->setViewportUpdateMode(QGraphicsView::SmartViewportUpdate);
+    this->useOpenGL(false);
 }
 
 void SceneCanvas::leaveEvent(QEvent *event)
@@ -74,8 +76,8 @@ void SceneCanvas::setupMatrix()
 
 void SceneCanvas::init()
 {
-    int mapWidth = 250;
-    int mapHeight = 250;
+    int mapWidth = 350;
+    int mapHeight = 350;
     int tileDim = 32;
     m_scene = new Ignis::Scene(this);
 
@@ -127,4 +129,33 @@ void SceneCanvas::init()
     this->setScene(m_scene);
     m_scene->setSceneRect(0,0,tileDim * mapWidth,tileDim * mapHeight);
     this->centerOn(0,0);
+}
+
+void SceneCanvas::useOpenGL(bool flag)
+{
+    //QWidget* oldWidget = this->viewport();
+
+    if (flag)
+    {
+        QGLWidget* widget = new QGLWidget(QGLFormat(QGL::SampleBuffers | QGL::DirectRendering));
+        widget->setMouseTracking(true);
+        this->setViewport(widget);
+    }
+
+    else
+    {
+        QWidget* widget = new QWidget();
+        this->setViewport(widget);
+        widget->setMouseTracking(true);
+    }
+
+    /*
+    if (oldWidget)
+    {
+        oldWidget->setMouseTracking(false);
+        delete oldWidget;
+    }*/
+
+    this->setViewportUpdateMode(QGraphicsView::SmartViewportUpdate);
+    this->update();
 }
